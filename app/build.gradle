@@ -1,0 +1,42 @@
+plugins {
+    id 'com.android.application'
+    id 'org.jetbrains.kotlin.android'
+}
+
+android {
+    namespace 'com.vtcassure.phone'
+    compileSdk 34
+
+    defaultConfig {
+        applicationId "com.vtcassure.phone"
+        minSdk 28            // CXR SDK requires >= 28
+        targetSdk 34
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release { minifyEnabled false }
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
+    }
+    kotlinOptions { jvmTarget = '17' }
+    buildFeatures { viewBinding false }
+    packaging {
+        resources.excludes += ['META-INF/*']
+    }
+}
+
+dependencies {
+    implementation 'androidx.appcompat:appcompat:1.7.0'
+    implementation 'androidx.core:core-ktx:1.13.1'
+    implementation 'com.google.android.material:material:1.12.0'
+    implementation 'com.squareup.okhttp3:okhttp:4.12.0'
+
+    // Rokid CXR-L : 폰에서 돌며 Hi Rokid(AI App)에 AIDL 로 바인딩한다.
+    // 공식 SDK Overview 기준 Public Access = Yes (CXR-M 은 Contact Sales).
+    // 1.0.4 는 공개 샘플(RokidGlasses-Weather-for-Android)에서 검증된 버전.
+    // 최신은 1.1.2 이며 API 는 동일하다. 해석 문제가 없으면 올려도 된다.
+    implementation 'com.rokid.cxr:client-l:1.0.4'
+}

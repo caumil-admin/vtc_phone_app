@@ -1,0 +1,13 @@
+pluginManagement {
+    repositories { gradlePluginPortal(); google(); mavenCentral() }
+}
+dependencyResolutionManagement {
+    repositoriesMode.set(RepositoriesMode.PREFER_SETTINGS)
+    repositories {
+        google()
+        mavenCentral()
+        maven { url = uri("https://maven.rokid.com/repository/maven-public/") }
+    }
+}
+rootProject.name = "VTC-ASSURE Phone"
+include ':app'
